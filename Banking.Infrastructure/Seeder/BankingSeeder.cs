@@ -81,19 +81,22 @@ public class BankingSeeder(BankingDbContext dbContext): IBankingSeeder
                 {
                     Balance = 30000,
                     CreatedDate = new DateTime(2023, 07, 07),
-                    UserId = 1
+                    UserId = 1,
+                    CardNumber = "4321 4321 4321 4321"
                 },
                 new Account()
                 {
                     Balance = 50000,
                     CreatedDate = new DateTime(2023, 09, 17),
-                    UserId = 2
+                    UserId = 2,
+                    CardNumber = "1234 1234 1234 1234"
                 },
                 new Account()
                 {
                     Balance = 130000,
                     CreatedDate = new DateTime(2023, 01, 01),
-                    UserId = 3
+                    UserId = 3,
+                    CardNumber = "5678 5678 5678 5678"
                 }
             ];
         return accounts;

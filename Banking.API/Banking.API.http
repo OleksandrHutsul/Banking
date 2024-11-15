@@ -1,3 +1,26 @@
-@Banking.API_HostAddress = http://localhost:5239
+@Banking.API_HostAddress = https://localhost:7002
 
 
+GET {{Banking.API_HostAddress}}/api/account
+
+###
+
+POST {{Banking.API_HostAddress}}/api/account
+Content-Type: application/json
+
+{
+  "Balance": 30000,
+  "CreatedDate": "2023-07-07T00:00:00",
+  "UserId": 1,
+  "CardNumber": "4321 4321 4321 4321"
+}
+
+###
+
+GET {{Banking.API_HostAddress}}/api/account/3
+
+###
+
+DELETE {{Banking.API_HostAddress}}/api/account/1004
+
+###

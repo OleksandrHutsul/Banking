@@ -1,3 +1,4 @@
+using Banking.Application.Extensions;
 using Banking.Infrastructure.Extensions;
 using Banking.Infrastructure.Seeder;
 
@@ -7,7 +8,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
+
 
 var app = builder.Build();
 

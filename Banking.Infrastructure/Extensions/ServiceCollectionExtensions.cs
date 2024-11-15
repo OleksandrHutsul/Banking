@@ -16,6 +16,6 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<BankingDbContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped<IBankingSeeder, BankingSeeder>();
-        services.AddScoped<IBankingRepository, BankingRepository>();
+        services.AddScoped<IAccountRepository, AccountRepository>();
     }
 }
