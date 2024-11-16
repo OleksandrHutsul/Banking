@@ -4,7 +4,7 @@ public class Transaction
 {
     public int Id { get; set; }
     public decimal Amount { get; set; }
-    public DateTime TransactionDate { get; set; }
+    public DateTime TransactionDate { get; set; } = DateTime.Now;
     public int TransactionTypeId { get; set; }
     public int? FromAccountId { get; set; }
     public int ToAccountId { get; set; }

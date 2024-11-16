@@ -47,7 +47,7 @@ namespace Banking.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("Banking.Domain.Entities.Transaction", b =>
@@ -81,7 +81,7 @@ namespace Banking.Infrastructure.Migrations
 
                     b.HasIndex("TransactionTypeId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("Banking.Domain.Entities.TransactionType", b =>
@@ -98,7 +98,7 @@ namespace Banking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TransactionTypes");
+                    b.ToTable("TransactionTypes", (string)null);
                 });
 
             modelBuilder.Entity("Banking.Domain.Entities.User", b =>
@@ -126,7 +126,7 @@ namespace Banking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Banking.Domain.Entities.Account", b =>

@@ -71,3 +71,42 @@ Content-Type: application/json
 
 ###
 
+
+POST {{Banking.API_HostAddress}}/api/transaction/Deposit
+Content-Type: application/json
+
+{
+  "Amount": 52000,
+  "ToAccountId": 2
+}
+
+###
+
+GET {{Banking.API_HostAddress}}/api/transaction/GetAll
+
+###
+
+GET {{Banking.API_HostAddress}}/api/transaction/GetById/5
+
+###
+
+POST {{Banking.API_HostAddress}}/api/transaction/Withdraw
+Content-Type: application/json
+
+{
+  "Amount": -55000,
+  "ToAccountId": 2
+}
+
+###
+
+POST {{Banking.API_HostAddress}}/api/transaction/Transfer
+Content-Type: application/json
+
+{
+  "Amount": -150000,
+  "FromAccountId": 2,
+  "ToAccountId": 15
+}
+
+###
