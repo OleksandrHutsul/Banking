@@ -6,6 +6,7 @@ public interface IAccountRepository
 {
     Task<IEnumerable<Account>> GetAllAsync();
     Task<Account?> GetByIdAsync(int id);
+    Task<Account?> GetDetailByCardNumberAsync(string cardNumber);
     Task<int> Create(Account entity);
     Task Delete(Account entity);
     Task<bool> IsCardNumberUniqueAsync(string cardNumber);

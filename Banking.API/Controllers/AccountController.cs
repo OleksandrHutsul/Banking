@@ -2,6 +2,7 @@
 using Banking.Application.Accounts.Commands.DeleteAccount;
 using Banking.Application.Accounts.Commands.Queries.GetAllAccounts;
 using Banking.Application.Accounts.Commands.Queries.GetByIdAccount;
+using Banking.Application.Accounts.Commands.Queries.GetDetailByCardNumber;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,18 @@ namespace Banking.API.Controllers
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var account = await mediator.Send(new GetByIdAccountQuery(id));
+            if (account is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+
+        [HttpGet("GetDetailByCardNumber/{cardNumber}")]
+        public async Task<IActionResult> GetDetailByCardNumber([FromRoute] string cardNumber)
+        {
+            var account = await mediator.Send(new GetDetailByCardNumberQuery(cardNumber));
             if (account is null)
             {
                 return NotFound();

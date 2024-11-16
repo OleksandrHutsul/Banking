@@ -41,6 +41,16 @@ public class AccountRepository(BankingDbContext dbContext): IAccountRepository
         return accounts;
     }
 
+    public async Task<Account?> GetDetailByCardNumberAsync(string cardNumber)
+    {
+        var normalizedCardNumber = cardNumber.Replace(" ", "");
+        return await dbContext.Accounts
+            .Include(r => r.User)
+            .Include(r => r.Transactions)
+            .FirstOrDefaultAsync(x => x.CardNumber.Replace(" ", "") == normalizedCardNumber);
+    }
+
+
     public async Task<bool> IsCardNumberUniqueAsync(string cardNumber)
     {
         return !await dbContext.Accounts.AnyAsync(a => a.CardNumber == cardNumber);

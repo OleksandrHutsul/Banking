@@ -21,6 +21,10 @@ GET {{Banking.API_HostAddress}}/api/account/GetById/3
 
 ###
 
+GET {{Banking.API_HostAddress}}/api/account/GetDetailByCardNumber/43214321432143211
+
+###
+
 POST {{Banking.API_HostAddress}}/api/user/Create
 Content-Type: application/json
 
@@ -66,3 +70,4 @@ Content-Type: application/json
 }
 
 ###
+
