@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Banking.Application.Accounts.Commands.Queries.GetByIdAccount;
 using Banking.Application.Users.Commands.Dtos;
 using Banking.Domain.Repositories;
 using MediatR;
@@ -7,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Banking.Application.Users.Commands.Queries.GetUserById;
 
-public class GetUserByIdQueryHandler(ILogger<GetByIdAccountQueryHandler> logger,
+public class GetUserByIdQueryHandler(ILogger<GetUserByIdQueryHandler> logger,
     IMapper mapper,
     IUserRepository userRepository) : IRequestHandler<GetUserByIdQuery, UserDto?>
 {

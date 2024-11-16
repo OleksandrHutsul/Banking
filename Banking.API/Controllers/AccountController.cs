@@ -31,7 +31,7 @@ namespace Banking.API.Controllers
         }
 
         [HttpDelete("Delete/{id}")]
-        public async Task<IActionResult> DeleteRestaurant([FromRoute] int id)
+        public async Task<IActionResult> DeleteAccount([FromRoute] int id)
         {
             var isDeleted = await mediator.Send(new DeleteAccountCommand(id));
 
@@ -44,7 +44,7 @@ namespace Banking.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> CreateRestaurant(CreateAccountCommand command)
+        public async Task<IActionResult> CreateAccount(CreateAccountCommand command)
         {
             int id = await mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id }, null);

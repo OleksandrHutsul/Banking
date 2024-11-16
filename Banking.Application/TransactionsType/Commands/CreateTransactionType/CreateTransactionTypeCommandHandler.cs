@@ -1,12 +1,23 @@
-﻿using Banking.Application.Users.Commands.CreateUser;
+﻿using AutoMapper;
+using Banking.Domain.Entities;
+using Banking.Domain.Repositories;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Banking.Application.TransactionsType.Commands.CreateTransactionType;
 
-public class CreateTransactionTypeCommandHandler : IRequestHandler<CreateTransactionTypeCommand, int>
+public class CreateTransactionTypeCommandHandler(ILogger<CreateTransactionTypeCommandHandler> logger,
+    IMapper mapper,
+    ITransactionTypeRepository transactionTypeRepository) : IRequestHandler<CreateTransactionTypeCommand, int>
 {
-    public Task<int> Handle(CreateTransactionTypeCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateTransactionTypeCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        logger.LogInformation("Creating a new transaction type");
+
+        var transactionType = mapper.Map<TransactionType>(request);
+
+        int id = await transactionTypeRepository.Create(transactionType);
+
+        return id;
     }
 }

@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{Banking.API_HostAddress}}/api/account/Delete/{id}
+DELETE {{Banking.API_HostAddress}}/api/account/Delete/4
 
 ###
 
@@ -34,5 +34,35 @@ Content-Type: application/json
 ###
 
 GET {{Banking.API_HostAddress}}/api/user/GetById/3
+
+###
+
+POST {{Banking.API_HostAddress}}/api/transactiontype/Create
+Content-Type: application/json
+
+{
+  "Name": "test"
+}
+
+###
+
+DELETE {{Banking.API_HostAddress}}/api/transactiontype/Delete/5
+
+###
+
+GET {{Banking.API_HostAddress}}/api/transactiontype/GetAll
+
+###
+
+GET {{Banking.API_HostAddress}}/api/transactiontype/GetById/6
+
+###
+
+PUT {{Banking.API_HostAddress}}/api/transactiontype/Update/6
+Content-Type: application/json
+
+{
+  "Name": "testUp"
+}
 
 ###

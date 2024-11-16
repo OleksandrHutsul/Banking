@@ -22,7 +22,7 @@ namespace Banking.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> CreateRestaurant(CreateUserCommand command)
+        public async Task<IActionResult> CreateUser(CreateUserCommand command)
         {
             int id = await mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id }, null);
