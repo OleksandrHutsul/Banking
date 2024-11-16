@@ -17,5 +17,6 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IBankingSeeder, BankingSeeder>();
         services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
     }
 }

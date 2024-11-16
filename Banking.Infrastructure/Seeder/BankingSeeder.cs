@@ -1,7 +1,6 @@
 ﻿using Banking.Domain.Entities;
 using Banking.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace Banking.Infrastructure.Seeder;
 

@@ -12,7 +12,7 @@ public class GetByIdAccountQueryHandler(ILogger<GetByIdAccountQueryHandler> logg
 {
     public async Task<AccountDto?> Handle(GetByIdAccountQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Getting restaurant {request.Id}");
+        logger.LogInformation($"Getting account {request.Id}");
         var account = await accountRepository.GetByIdAsync(request.Id);
 
         var accountDto = mapper.Map<AccountDto?>(account);

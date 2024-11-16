@@ -40,4 +40,9 @@ public class AccountRepository(BankingDbContext dbContext): IAccountRepository
 
         return accounts;
     }
+
+    public async Task<bool> IsCardNumberUniqueAsync(string cardNumber)
+    {
+        return !await dbContext.Accounts.AnyAsync(a => a.CardNumber == cardNumber);
+    }
 }

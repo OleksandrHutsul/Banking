@@ -11,43 +11,43 @@ namespace Banking.API.Controllers
     [ApiController]
     public class AccountController(IMediator mediator) : ControllerBase
     {
-        [HttpGet]
-    public async Task<IActionResult> GetAll()
-    {
-        var restraurants = await mediator.Send(new GetAllAccountsQuery());
-        return Ok(restraurants);
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] int id)
-    {
-        var restaurant = await mediator.Send(new GetByIdAccountQuery(id));
-        if (restaurant is null)
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
         {
+            var accounts = await mediator.Send(new GetAllAccountsQuery());
+            return Ok(accounts);
+        }
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var account = await mediator.Send(new GetByIdAccountQuery(id));
+            if (account is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> DeleteRestaurant([FromRoute] int id)
+        {
+            var isDeleted = await mediator.Send(new DeleteAccountCommand(id));
+
+            if (isDeleted)
+            {
+                return NoContent();
+            }
+
             return NotFound();
         }
 
-        return Ok(restaurant);
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteRestaurant([FromRoute] int id)
-    {
-        var isDeleted = await mediator.Send(new DeleteAccountCommand(id));
-
-        if (isDeleted)
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreateRestaurant(CreateAccountCommand command)
         {
-            return NoContent();
+            int id = await mediator.Send(command);
+            return CreatedAtAction(nameof(GetById), new { id }, null);
         }
-
-        return NotFound();
     }
-
-    [HttpPost]
-    public async Task<IActionResult> CreateRestaurant(CreateAccountCommand command)
-    {
-        int id = await mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id }, null);
-    }
-}
 }

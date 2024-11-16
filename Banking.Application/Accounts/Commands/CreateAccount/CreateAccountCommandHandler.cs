@@ -12,11 +12,21 @@ public class CreateAccountCommandHandler(ILogger<CreateAccountCommandHandler> lo
 {
     public async Task<int> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Getting all accounts");
+        logger.LogInformation("Creating a new accounts");
 
-        var restaurant = mapper.Map<Account>(request);
+        string cardNumber;
+        do
+        {
+            cardNumber = CardNumberGenerator.GenerateCardNumber();
+        } while (!await accountRepository.IsCardNumberUniqueAsync(cardNumber));
 
-        int id = await accountRepository.Create(restaurant);
+        var account = new Account
+        {
+            UserId = request.UserId,
+            CardNumber = cardNumber
+        };
+
+        int id = await accountRepository.Create(account);
 
         return id;
     }

@@ -28,7 +28,7 @@ public class BankingDbContext(DbContextOptions<BankingDbContext> options) : DbCo
 
         modelBuilder.Entity<Account>()
             .HasOne(a => a.User)
-            .WithMany()
+            .WithMany(u => u.Accounts)
             .HasForeignKey(a => a.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 

@@ -4,6 +4,7 @@ using Banking.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banking.Infrastructure.Migrations
 {
     [DbContext(typeof(BankingDbContext))]
-    partial class BankingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241116102851_createNewDB")]
+    partial class createNewDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,7 +135,7 @@ namespace Banking.Infrastructure.Migrations
             modelBuilder.Entity("Banking.Domain.Entities.Account", b =>
                 {
                     b.HasOne("Banking.Domain.Entities.User", "User")
-                        .WithMany("Accounts")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -169,11 +172,6 @@ namespace Banking.Infrastructure.Migrations
             modelBuilder.Entity("Banking.Domain.Entities.Account", b =>
                 {
                     b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("Banking.Domain.Entities.User", b =>
-                {
-                    b.Navigation("Accounts");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,8 +3,8 @@
 public class Account
 {
     public int Id { get; set; }
-    public decimal Balance { get; set; }
-    public DateTime CreatedDate { get; set; }
+    public decimal Balance { get; set; } = 0;
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
     public int UserId { get; set; }
     public string CardNumber { get; set; }
 

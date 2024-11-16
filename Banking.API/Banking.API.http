@@ -1,26 +1,38 @@
 @Banking.API_HostAddress = https://localhost:7002
 
-
-GET {{Banking.API_HostAddress}}/api/account
-
-###
-
-POST {{Banking.API_HostAddress}}/api/account
+POST {{Banking.API_HostAddress}}/api/account/Create
 Content-Type: application/json
 
 {
-  "Balance": 30000,
-  "CreatedDate": "2023-07-07T00:00:00",
-  "UserId": 1,
-  "CardNumber": "4321 4321 4321 4321"
+  "UserId": 1
 }
 
 ###
 
-GET {{Banking.API_HostAddress}}/api/account/3
+DELETE {{Banking.API_HostAddress}}/api/account/Delete/{id}
 
 ###
 
-DELETE {{Banking.API_HostAddress}}/api/account/1004
+GET {{Banking.API_HostAddress}}/api/account/GetAll
+
+###
+
+GET {{Banking.API_HostAddress}}/api/account/GetById/3
+
+###
+
+POST {{Banking.API_HostAddress}}/api/user/Create
+Content-Type: application/json
+
+{
+  "Name": "Kiril",
+  "LastName": "Sudakov",
+  "Birthday": "2010-11-16T12:06:16.094Z",
+  "Phone": "+380977600280"
+}
+
+###
+
+GET {{Banking.API_HostAddress}}/api/user/GetById/3
 
 ###
