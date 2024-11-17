@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Banking.Application.Accounts.Commands.Dtos;
-using Banking.Application.Accounts.Commands.Queries.GetAllAccounts;
 using Banking.Application.Transactions.Commands.Dtos;
 using Banking.Domain.Repositories;
 using MediatR;
